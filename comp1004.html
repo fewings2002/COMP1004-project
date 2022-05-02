@@ -50,6 +50,32 @@ section::after {
   clear: both;
 }
 
+            .button1 {
+                background-color: #FF9900;
+                border: none;
+                color: white;
+                padding: 15px 32px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 30px;
+                height: 290px;
+                width: 600px;
+            }
+
+            .button2 {
+                background-color: #31C4F3;
+                border: none;
+                color: white;
+                padding: 25px 32px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 30px;
+                height: 290px;
+                width: 600px;
+            }
+
 /* Style the footer */
 footer {
   background-color: #777;
@@ -75,28 +101,15 @@ footer {
         </header>
         <section>
             <nav>
-                <button onclick="document.location='creatingAnAppointment.html'">
-                    Make an Appointment
+                <button class="button1" onclick="document.location='creatingAnAppointment.html'">
+                    Start an Appointment Countdown
                 </button>
-                    
-                    <button>
-                        Amend an Appointment
-                    </button>
-                    <button>
-                        Delete an Appointment
-                    </button>
 
-                
+
             </nav>
             <article>
-                <button onclick="document.location='creatingAPlayTimeLimit.html'">
-                    Create a PlayTime Limit
-                </button>
-                <button>
-                    Amend a PlayTime Limit
-                </button>
-                <button>
-                    Delete a PlayTime Limit
+                <button class="button2" onclick="document.location='startingAPlayTimeLimit.html'">
+                    Start a PlayTime Limit
                 </button>
             </article>
         </section>

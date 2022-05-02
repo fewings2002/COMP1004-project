@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            playTimeCounter
+        </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Style the header */
+header {
+  background-color: #252021;
+  padding: 30px;
+  text-align: center;
+  font-size: 35px;
+  color: white;
+}
+
+/* Create two columns/boxes that floats next to each other */
+            nav {
+                text-align: center;
+                height: 300px; /* only for demonstration, should be removed */
+                background: #31C4F3;
+                padding: 20px;
+                font-size: 45px;
+            }
+
+/* Style the list inside the menu */
+nav ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+
+/* Clear floats after the columns */
+section::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Style the footer */
+footer {
+  background-color: #777;
+  padding: 10px;
+  text-align: center;
+  color: white;
+}
+
+/* Responsive layout - makes the two columns/boxes stack on top of each other instead of next to each other, on small screens */
+@media (max-width: 600px) {
+  nav {
+    width: 100%;
+    height: auto;
+  }
+}
+        </style>
+    </head>
+    <body>
+        <header>
+            <h1>
+                Time Left of PlayTime
+            </h1>
+        </header>
+        <section>
+            <nav>
+                <form>
+                </form>
+                <h2>
+                    Limit: <span id="counterLimit" />
+                </h2>
+                <p id="demo"></p>
+            </nav>
+
+        </section>
+        <script>
+
+
+            // Set the date we're counting down to
+            //var currentDate = new Date.getTime();
+            var time = limit;
+
+            var countDownDate = new Date().getTime()+ time * 600000;
+
+            // Update the count down every 1 second
+            var x = setInterval(function () {
+
+                // Get today's date and time
+                var now = new Date().getTime();
+
+                //var distance = now - 6000;
+
+                // Find the distance between now and the count down date
+                var distance = countDownDate - now;
+
+                // Time calculations for days, hours, minutes and seconds
+                //var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                // Output the result in an element with id="demo"
+                document.getElementById("demo").innerHTML =hours + "h "
+                    + minutes + "m " + seconds + "s ";
+
+                // If the count down is over, write some text
+                if (distance < 0) {
+                    clearInterval(x);
+                    document.getElementById("demo").innerHTML = "PlayTime OVER";
+                }
+            }, 1000);
+        </script>
+    </body>
+</html>
