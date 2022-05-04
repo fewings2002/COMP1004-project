@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            startingAPlayTimeLimit
+        </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Style the header */
+header {
+  background-color: #252021;
+  padding: 30px;
+  text-align: center;
+  font-size: 35px;
+  color: white;
+}
+
+/* Create two columns/boxes that floats next to each other */
+            nav {
+                text-align: center;
+                height: 300px; /* only for demonstration, should be removed */
+                background: #31C4F3;
+                padding: 20px;
+                font-size: 45px;
+            }
+
+/* Style the list inside the menu */
+nav ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+
+/* Clear floats after the columns */
+section::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Style the footer */
+footer {
+  background-color: #777;
+  padding: 10px;
+  text-align: center;
+  color: white;
+}
+
+/* Responsive layout - makes the two columns/boxes stack on top of each other instead of next to each other, on small screens */
+@media (max-width: 600px) {
+  nav {
+    width: 100%;
+    height: auto;
+  }
+}
+        </style>
+    </head>
+    <body>
+        <header>
+            <h1>
+                Start a PlayTime Limit
+            </h1>
+        </header>
+        <section>
+            <nav>
+                <form method="POST">
+                    <input type="text" id="game" name="game" placeholder="Name of Game..." class="inputclass">
+
+                    <!--Allows user to input the name of the game-->
+
+                    <input type="text" id="username" name="username" placeholder="Username..." class="inputclass" />
+
+                    <!--Allows user to input their username-->
+
+                    <br>
+
+                    <input type="number" id="limit" name="limit" placeholder="PlayTime Limit (minutes)" class="inputclass">
+
+                    <!--Allows user to input the time limit they want to set-->
+
+                    <input type="number" name="level" placeholder="Current Level" class="inputclass">
+
+                    <!--Allows user to input their current level-->
+
+                    <br>
+
+                    <input type="number" name="xplevel" placeholder="Current XP Level" class="inputclass">
+
+                    <!--Allows user to input their current level-->
+
+
+                    <!--document.location='playTimeCounter.html'-->
+                    <input type="button" onclick="counter()" value="Start">
+
+                    <!-- Starts timer -->
+
+                    <input type="button" onclick="save()" value="Save">
+
+                    <!-- Saves to JSON file -->
+
+                    <p id="demo"></p>
+
+                    <script type="text/javascript">
+
+                        //function not in use
+                        //function handleSubmit() {
+                        //    const limit = document.getElementById('limit').value;
+
+                        //    localStorage.setItem("LIMIT", limit);
+
+                        //    //document.location = 'playTimeCounter.html';
+                        //    return;
+                        //}
+
+
+                        function save() {
+                            //Saves the inputs into a JSON file in local storage
+                            let game1 = document.getElementsByClassName("inputclass")[0].value;
+                            let username1 = document.getElementsByClassName("inputclass")[1].value;
+                            let limit1 = document.getElementsByClassName("inputclass")[2].value;
+                            let level1 = document.getElementsByClassName("inputclass")[3].value;
+                            let xplevel1 = document.getElementsByClassName("inputclass")[4].value;
+
+
+                            if (localStorage.gameName == null) localStorage.gameName = JSON.stringify("");
+                            if (localStorage.username == null) localStorage.username = JSON.stringify("");
+                            if (localStorage.playTimeLimit == null) localStorage.playTimeLimit = JSON.stringify("");
+                            if (localStorage.level == null) localStorage.level = JSON.stringify("");
+                            if (localStorage.xplevel == null) localStorage.xplevel = JSON.stringify("");
+                            localStorage.setItem("gameName", JSON.stringify(game1));
+                            localStorage.setItem("username", JSON.stringify(username1));
+                            localStorage.setItem("playTimeLimit", JSON.stringify(limit1));
+                            localStorage.setItem("level", JSON.stringify(level1));
+                            localStorage.setItem("xplevel", JSON.stringify(xplevel1));
+
+                        }
+
+                        function counter() {
+                            // Set the date we're counting down to
+                            var time = limit.value;
+
+                            /*var name = game.value;*/
+
+                            var countDownDate = new Date().getTime() + time * 60000;
+
+                            // Update the count down every second
+                            var x = setInterval(function () {
+
+                                // Get today's date and time
+                                var now = new Date().getTime();
+
+                                //var distance = now - 6000;
+
+                                // Find the distance between now and the count down date
+                                var distance = countDownDate - now;
+
+                                // Works out the time left in days, hours, minutes and seconds
+                                //var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                                var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                                var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                                var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                                // Output timer
+                                document.getElementById("demo").innerHTML = hours + "h "
+                                    + minutes + "m " + seconds + "s ";
+
+                                // Displays a message to the user once timer runs out
+                                if (distance < 0) {
+                                    clearInterval(x);
+                                    document.getElementById("demo").innerHTML = "PlayTime OVER";
+                                }
+                            }, 1000);
+
+                        }
+
+                                                                                                        //var game2 = JSON.parse(localStorage.getItem("gamename"));
+                                                                                                        //("inputclass")[0].value = game2;
+
+
+                    </script>
+
+
+                </form>   
+                
+            </nav>
+            
+        </section>
+        
+    </body>
+</html>
