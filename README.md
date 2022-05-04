@@ -1,2 +1,3 @@
 # COMP1004-project
 comp 1004 2021/2022 project
+This application is designed to help young adults manage their time more efficently. There are two sides to my website. The first is the appointment side which allows the user to input an appointment name, it's time and it's date and it will display a countdown. The user can also save an appointment to a JSON file in local storage. The other side is the PlayTime side. This side allows the user to input; the game they are playing, their username, the time limit they want to set themselves and the level and XP level they are on at the start of their session. They also have the option to save this data to a JSON file in local storage.
